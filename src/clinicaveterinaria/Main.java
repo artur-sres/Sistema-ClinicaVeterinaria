@@ -14,10 +14,8 @@ public class Main {
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
         
         }
-        
-        Tutor salsicha = new Tutor("Salchicha", "salsicha@hotmail", "Rua A, 123", "Mistérios S.A.", "08957033351");
-        
-        new CadastrarCachorro(salsicha).setVisible(true);
+        CadastrarTutor telaTutor = new CadastrarTutor();
+        telaTutor.setVisible(true);
         
     }
 }   

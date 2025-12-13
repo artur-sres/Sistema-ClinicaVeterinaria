@@ -5,10 +5,14 @@
 
 
 package clinicaveterinaria.view;
+import clinicaveterinaria.controller.CachorroController;
+import clinicaveterinaria.controller.TutorController;
 import clinicaveterinaria.util.DataUtil;
 import clinicaveterinaria.model.Enums.*;
 import clinicaveterinaria.model.Tutor;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -16,14 +20,16 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class CadastrarCachorro extends javax.swing.JFrame {
 
+    private Tutor tutorSelecionado;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastrarCachorro.class.getName());
 
     /** Creates new form CadastrarCachorro
      * @param tutor */
-    public CadastrarCachorro(Tutor tutor) {
+    public CadastrarCachorro(Tutor tutorSelecionado) {
         initComponents();
         DataUtil.inicializarCombos(cmbDia, cmbMes, cmbAno);
-        txtTutor.setText(tutor.getNome());
+        this.tutorSelecionado = tutorSelecionado;
+        txtTutor.setText(tutorSelecionado.getNome());
         txtTutor.setEditable(false);
         cmbSexo.setModel(new DefaultComboBoxModel<>(Sexo.values()));
         cmbPorte.setModel(new DefaultComboBoxModel<>(Porte.values()));
@@ -47,12 +53,12 @@ public class CadastrarCachorro extends javax.swing.JFrame {
         cmbDia = new javax.swing.JComboBox<>();
         cmbMes = new javax.swing.JComboBox<>();
         cmbAno = new javax.swing.JComboBox<>();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        ckbCastrado = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtPeso = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtTemperamento = new javax.swing.JTextField();
         cmbSexo = new javax.swing.JComboBox<>();
         btnSalvar = new javax.swing.JButton();
         btnCancelar2 = new javax.swing.JButton();
@@ -88,18 +94,18 @@ public class CadastrarCachorro extends javax.swing.JFrame {
         cmbAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbAno.addActionListener(this::cmbAnoActionPerformed);
 
-        jCheckBox1.setText("Castrado");
-        jCheckBox1.addActionListener(this::jCheckBox1ActionPerformed);
+        ckbCastrado.setText("Castrado");
+        ckbCastrado.addActionListener(this::ckbCastradoActionPerformed);
 
         jLabel5.setText("Sexo:");
 
         jLabel2.setText("Peso:");
 
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        txtPeso.addActionListener(this::txtPesoActionPerformed);
 
         jLabel6.setText("Temperamento:");
 
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        txtTemperamento.addActionListener(this::txtTemperamentoActionPerformed);
 
         cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
 
@@ -153,7 +159,7 @@ public class CadastrarCachorro extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2))
+                                .addComponent(txtTemperamento))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -169,7 +175,7 @@ public class CadastrarCachorro extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCheckBox1))
+                                        .addComponent(ckbCastrado))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
@@ -179,7 +185,7 @@ public class CadastrarCachorro extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jLabel7)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -204,7 +210,7 @@ public class CadastrarCachorro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1)
+                    .addComponent(ckbCastrado)
                     .addComponent(jLabel5)
                     .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
@@ -216,11 +222,11 @@ public class CadastrarCachorro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTemperamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(cmbPorte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,20 +268,38 @@ public class CadastrarCachorro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void ckbCastradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbCastradoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_ckbCastradoActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtTemperamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtTemperamentoActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtPesoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        this.dispose();
+        try {
+            int dia = Integer.parseInt(cmbDia.getSelectedItem().toString());
+            int mes = cmbMes.getSelectedIndex() + 1;
+            int ano = Integer.parseInt(cmbAno.getSelectedItem().toString());
+            java.time.LocalDate dataNascimento = java.time.LocalDate.of(ano, mes, dia);
+            Sexo sexo = (Sexo)cmbSexo.getSelectedItem();
+            Porte porte = (Porte)cmbPorte.getSelectedItem();
+            Funcao funcao = (Funcao)cmbFuncao.getSelectedItem();
+            Fucinho fucinho = (Fucinho)cmbFucinho.getSelectedItem();
+            boolean isCastrado = ckbCastrado.isSelected();
+            
+            CachorroController.cadastrarCachorro(txtNome.getText(), dataNascimento, sexo, isCastrado, Double.parseDouble(txtPeso.getText()), txtTemperamento.getText(), txtRaca.getText(), tutorSelecionado, porte, funcao, fucinho); 
+            JOptionPane.showMessageDialog(rootPane, "Pet cadastrado com sucesso!");
+            this.dispose();            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE);
+        } 
+           
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar2ActionPerformed
@@ -287,6 +311,7 @@ public class CadastrarCachorro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar2;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JCheckBox ckbCastrado;
     private javax.swing.JComboBox<String> cmbAno;
     private javax.swing.JComboBox<String> cmbDia;
     private javax.swing.JComboBox<Object> cmbFucinho;
@@ -294,7 +319,6 @@ public class CadastrarCachorro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbMes;
     private javax.swing.JComboBox<Object> cmbPorte;
     private javax.swing.JComboBox<Object> cmbSexo;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -306,10 +330,10 @@ public class CadastrarCachorro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtPeso;
     private javax.swing.JTextField txtRaca;
+    private javax.swing.JTextField txtTemperamento;
     private javax.swing.JTextField txtTutor;
     // End of variables declaration//GEN-END:variables
     

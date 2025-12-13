@@ -13,18 +13,19 @@ public abstract class Pet {
     protected boolean isCastrado;
     protected double peso;
     protected String temperamento;
+    protected String raca;
     protected Tutor tutor;
     //protected ArrayList<Consulta> consulta;
     //protected ArrayList<Vacina> Vacinas;
 
-    public Pet(String nome, LocalDate dataNascimento, int idade, Sexo sexo, boolean isCastrado, double peso, String temperamento, Tutor tutor) {
+    public Pet(String nome, LocalDate dataNascimento, Sexo sexo, boolean isCastrado, double peso, String temperamento, String raca, Tutor tutor) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        this.idade = idade;
         this.sexo = sexo;
         this.isCastrado = isCastrado;
         this.peso = peso;
         this.temperamento = temperamento;
+        this.raca = raca;
         this.tutor = tutor;
     }
 
