@@ -1,5 +1,9 @@
 package clinicaveterinaria;
 
+import clinicaveterinaria.controller.TutorController;
+import clinicaveterinaria.model.Tutor;
+import clinicaveterinaria.view.CadastrarTutor;
+import clinicaveterinaria.view.VisualizarTutor;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -11,5 +15,7 @@ public class Main {
         
         }
         
+        //VisualizarTutor tela = new VisualizarTutor(TutorController.listaTutores.get(0));
+        //tela.setVisible(true);
     }
 }   

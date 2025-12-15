@@ -4,6 +4,7 @@
  */
 package clinicaveterinaria.view;
 
+import clinicaveterinaria.controller.TutorController;
 import clinicaveterinaria.model.Tutor;
 
 /**
@@ -11,7 +12,7 @@ import clinicaveterinaria.model.Tutor;
  * @author Artur
  */
 public class VisualizarTutor extends javax.swing.JFrame {
-    
+    Tutor tutor;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VisualizarTutor.class.getName());
 
     /**
@@ -21,17 +22,18 @@ public class VisualizarTutor extends javax.swing.JFrame {
     public VisualizarTutor(Tutor tutor) {
         initComponents();
         
-    txtNome.setText(tutor.getNome());
-    txtEmail.setText(tutor.getEmail());
-    txtTelefone.setText(tutor.getTelefone());
-    txtEndereco.setText(tutor.getEndereco());
-    txtCPF.setText(tutor.getCPF());
-  
-    txtNome.setEditable(false);
-    txtCPF.setEditable(false);
-    txtEmail.setEditable(false);
-    txtTelefone.setEditable(false);
-    txtEndereco.setEditable(false);
+        this.tutor = tutor;
+        txtNome.setText(tutor.getNome());
+        txtEmail.setText(tutor.getEmail());
+        txtTelefone.setText(tutor.getTelefone());
+        txtEndereco.setText(tutor.getEndereco());
+        txtCPF.setText(tutor.getCPF());
+
+        txtNome.setEditable(false);
+        txtCPF.setEditable(false);
+        txtEmail.setEditable(false);
+        txtTelefone.setEditable(false);
+        txtEndereco.setEditable(false);
     }
 
     /**
@@ -174,7 +176,9 @@ public class VisualizarTutor extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         try {
-            
+            EditarTutor tela = new EditarTutor(this.tutor);
+            tela.setVisible(true);
+            this.dispose();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnEditarActionPerformed

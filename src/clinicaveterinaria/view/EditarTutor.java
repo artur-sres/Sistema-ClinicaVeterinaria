@@ -4,13 +4,16 @@
  */
 package clinicaveterinaria.view;
 
+import clinicaveterinaria.controller.TutorController;
 import clinicaveterinaria.model.Tutor;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Artur
  */
 public class EditarTutor extends javax.swing.JFrame {
+    Tutor tutor;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditarTutor.class.getName());
 
@@ -21,6 +24,7 @@ public class EditarTutor extends javax.swing.JFrame {
     public EditarTutor(Tutor tutor) {
         initComponents();
         
+        this.tutor = tutor;
         txtNome.setText(tutor.getNome());
         txtEmail.setText(tutor.getEmail());
         txtTelefone.setText(tutor.getTelefone());
@@ -142,10 +146,19 @@ public class EditarTutor extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btcAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcAplicarActionPerformed
-        this.dispose();
+        try {
+            TutorController.editarTutor(tutor, txtNome.getText(), txtEmail.getText(), txtTelefone.getText(), txtEndereco.getText(), txtCPF.getText()); 
+            JOptionPane.showMessageDialog(rootPane, "Tutor editado com sucesso!");
+            this.dispose();
+            VisualizarTutor tela = new VisualizarTutor(TutorController.listaTutores.get(0));
+            tela.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btcAplicarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -153,7 +166,8 @@ public class EditarTutor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        VisualizarTutor tela = new VisualizarTutor(TutorController.listaTutores.get(0));
+        tela.setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
