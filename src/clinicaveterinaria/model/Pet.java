@@ -16,7 +16,7 @@ public abstract class Pet {
     protected String temperamento;
     protected String raca;
     protected Tutor tutor;
-    protected ArrayList<Consulta> consulta;
+    protected ArrayList<Consulta> consultas;
 
     public Pet(String nome, LocalDate dataNascimento, Sexo sexo, boolean isCastrado, double peso, String temperamento, String raca, Tutor tutor) {
         this.nome = nome;
