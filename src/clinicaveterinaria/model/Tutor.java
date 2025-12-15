@@ -9,6 +9,7 @@ public class Tutor {
     private String cpf;
     private ArrayList<Pet> animais;
 
+    //Construtor
     public Tutor(String nome, String email, String telefone, String endereco, String cpf) {
         this.nome = nome;
         this.email = email;
@@ -17,6 +18,7 @@ public class Tutor {
         this.cpf = cpf;
     }
 
+    //Getters
     public String getNome() {
         return nome;
     }
@@ -36,6 +38,7 @@ public class Tutor {
         return animais;
     }
 
+    //Setters
     public void setNome(String nome) {
         this.nome = nome;
     }

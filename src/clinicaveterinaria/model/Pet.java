@@ -1,6 +1,7 @@
 package clinicaveterinaria.model;
 import clinicaveterinaria.model.Enums.Sexo;
 import java.time.LocalDate;
+import java.util.ArrayList;
 //import java.time.LocalDate.time;
 //import java.util.ArrayList;
 
@@ -15,8 +16,7 @@ public abstract class Pet {
     protected String temperamento;
     protected String raca;
     protected Tutor tutor;
-    //protected ArrayList<Consulta> consulta;
-    //protected ArrayList<Vacina> Vacinas;
+    protected ArrayList<Consulta> consulta;
 
     public Pet(String nome, LocalDate dataNascimento, Sexo sexo, boolean isCastrado, double peso, String temperamento, String raca, Tutor tutor) {
         this.nome = nome;
