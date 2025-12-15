@@ -3,22 +3,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package clinicaveterinaria.view;
-import javax.swing.JOptionPane;
-import clinicaveterinaria.controller.TutorController;
+
+import clinicaveterinaria.model.Tutor;
 
 /**
  *
  * @author Artur
  */
-public class CadastrarTutor extends javax.swing.JFrame {
+public class EditarTutor extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastrarTutor.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditarTutor.class.getName());
 
     /**
-     * Creates new form CadastrarTutor
+     * Creates new form EditarTutor
+     * @param tutor
      */
-    public CadastrarTutor() {
+    public EditarTutor(Tutor tutor) {
         initComponents();
+        
+        txtNome.setText(tutor.getNome());
+        txtEmail.setText(tutor.getEmail());
+        txtTelefone.setText(tutor.getTelefone());
+        txtEndereco.setText(tutor.getEndereco());
+        txtCPF.setText(tutor.getCPF());
     }
 
     /**
@@ -31,40 +38,40 @@ public class CadastrarTutor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtCPF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        btcAplicar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
         txtEmail = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         txtEndereco = new javax.swing.JTextField();
-        txtCPF = new javax.swing.JTextField();
-        btnSalvar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastrar Dados do Tutor");
+        jLabel1.setText("Editar Dados do Tutor");
+
+        btcAplicar.setText("Aplicar Alterações");
+        btcAplicar.addActionListener(this::btcAplicarActionPerformed);
 
         jLabel2.setText("Nome:");
 
-        jLabel3.setText("Email:");
-
         jLabel4.setText("Telefone:");
+
+        jLabel3.setText("Email:");
 
         jLabel5.setText("Endereço:");
 
         jLabel6.setText("CPF:");
 
         txtNome.addActionListener(this::txtNomeActionPerformed);
-
-        btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(this::btnSalvarActionPerformed);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
@@ -79,11 +86,7 @@ public class CadastrarTutor extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSalvar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
@@ -98,7 +101,11 @@ public class CadastrarTutor extends javax.swing.JFrame {
                                         .addComponent(txtEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                                         .addComponent(txtTelefone, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                        .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btcAplicar)))
                         .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -129,37 +136,29 @@ public class CadastrarTutor extends javax.swing.JFrame {
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
+                    .addComponent(btcAplicar)
                     .addComponent(btnCancelar))
                 .addGap(15, 15, 15))
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btcAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcAplicarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btcAplicarActionPerformed
+
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        
+
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        try {
-            TutorController.cadastrarTutor(txtNome.getText(), txtEmail.getText(), txtTelefone.getText(), txtEndereco.getText(), txtCPF.getText()); 
-            JOptionPane.showMessageDialog(rootPane, "Tutor cadastrado com sucesso!");
-            this.dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_btnSalvarActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();     
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btcAplicar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
