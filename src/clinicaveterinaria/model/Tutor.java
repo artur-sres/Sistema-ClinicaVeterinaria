@@ -1,33 +1,20 @@
 package clinicaveterinaria.model;
 import java.util.ArrayList;
 
-public class Tutor {
-    private String nome;
-    private String email;
-    private String telefone;
+public class Tutor extends Pessoa{
     private String endereco;
     private String cpf;
-    private ArrayList<Pet> animais;
+    private ArrayList<Pet> pets;
 
     //Construtor
     public Tutor(String nome, String email, String telefone, String endereco, String cpf) {
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
+        super(nome, email, telefone);
         this.endereco = endereco;
         this.cpf = cpf;
+        this.pets = new ArrayList<>();
     }
 
     //Getters
-    public String getNome() {
-        return nome;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getTelefone() {
-        return telefone;
-    }
     public String getEndereco() {
         return endereco;
     }
@@ -35,7 +22,7 @@ public class Tutor {
         return cpf;
     }
     public ArrayList<Pet> getAnimais() {
-        return animais;
+        return pets;
     }
 
     //Setters
@@ -55,7 +42,7 @@ public class Tutor {
         this.cpf = cpf;
     }
     public void setAnimais(ArrayList<Pet> animais) {
-        this.animais = animais;
+        this.pets = animais;
     }
     
 }

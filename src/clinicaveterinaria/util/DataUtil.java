@@ -29,7 +29,7 @@ public class DataUtil {
     public static LocalDate montarData(JComboBox cmbDia, JComboBox cmbMes, JComboBox cmbAno) throws Exception {
         try {
             int dia = Integer.parseInt(cmbDia.getSelectedItem().toString());
-            int mes = cmbMes.getSelectedIndex() + 1; // +1 porque Janeiro é 0
+            int mes = cmbMes.getSelectedIndex() + 1;
             int ano = Integer.parseInt(cmbAno.getSelectedItem().toString());
 
             return LocalDate.of(ano, mes, dia);
