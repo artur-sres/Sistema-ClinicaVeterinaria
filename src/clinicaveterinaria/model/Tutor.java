@@ -44,5 +44,11 @@ public class Tutor extends Pessoa{
     public void setAnimais(ArrayList<Pet> animais) {
         this.pets = animais;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+    
     
 }

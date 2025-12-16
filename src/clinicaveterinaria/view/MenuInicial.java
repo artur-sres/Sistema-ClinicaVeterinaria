@@ -36,7 +36,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btnVoltar1 = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -103,8 +103,8 @@ public class MenuInicial extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
-        btnVoltar1.setText("Atualizar");
-        btnVoltar1.addActionListener(this::btnVoltar1ActionPerformed);
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(this::btnAtualizarActionPerformed);
 
         jMenu1.setText("Cadastros");
 
@@ -181,7 +181,7 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -215,7 +215,7 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
-                    .addComponent(btnVoltar1))
+                    .addComponent(btnAtualizar))
                 .addGap(12, 12, 12))
         );
 
@@ -256,9 +256,11 @@ public class MenuInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVoltar1ActionPerformed
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        this.dispose();
+        MenuInicial menu = new MenuInicial();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void gerenciarTutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciarTutoresActionPerformed
         GerenciarTutores tela = new GerenciarTutores();
@@ -291,8 +293,8 @@ public class MenuInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JButton btnVoltar1;
     private javax.swing.JMenuItem cadastrarNovoTutor;
     private java.awt.Canvas canvas1;
     private javax.swing.JMenuItem gerenciarTutores;

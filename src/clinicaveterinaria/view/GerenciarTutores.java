@@ -4,6 +4,10 @@
  */
 package clinicaveterinaria.view;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import clinicaveterinaria.controller.TutorController;
+import clinicaveterinaria.model.Tutor;
 /**
  *
  * @author Artur
@@ -17,8 +21,20 @@ public class GerenciarTutores extends javax.swing.JFrame {
      */
     public GerenciarTutores() {
         initComponents();
+        carregarLista();
     }
 
+    private void carregarLista() {
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        
+        // Percorre a lista do Controller e adiciona os nomes na tela
+        for (Tutor t : TutorController.listaTutores) {
+            modelo.addElement(t.toString());
+        }
+        
+        jList1.setModel(modelo); // jList1 é o nome da sua lista no código
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,16 +44,17 @@ public class GerenciarTutores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnVoltar1 = new javax.swing.JButton();
+        btnAvançar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         btnVoltar2 = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnVoltar1.setText("Continuar");
-        btnVoltar1.addActionListener(this::btnVoltar1ActionPerformed);
+        btnAvançar.setText("Avançar");
+        btnAvançar.addActionListener(this::btnAvançarActionPerformed);
 
         jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -48,10 +65,13 @@ public class GerenciarTutores extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Tutores Cadastrados");
+        jLabel1.setText("Selecione um Tutor:");
 
         btnVoltar2.setText("Cancelar");
         btnVoltar2.addActionListener(this::btnVoltar2ActionPerformed);
+
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(this::btnAtualizarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,11 +81,13 @@ public class GerenciarTutores extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(btnAtualizar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnVoltar2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnVoltar1))
+                            .addComponent(btnAvançar))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14))
         );
@@ -78,8 +100,9 @@ public class GerenciarTutores extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar1)
-                    .addComponent(btnVoltar2))
+                    .addComponent(btnAvançar)
+                    .addComponent(btnVoltar2)
+                    .addComponent(btnAtualizar))
                 .addGap(15, 15, 15))
         );
 
@@ -87,17 +110,32 @@ public class GerenciarTutores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVoltar1ActionPerformed
+    private void btnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvançarActionPerformed
+        int indiceSelecionado = jList1.getSelectedIndex();
+        
+        if (indiceSelecionado != -1) {
+            Tutor tutorSelecionado = TutorController.listaTutores.get(indiceSelecionado);
+            VisualizarTutor tela = new VisualizarTutor(tutorSelecionado);
+            tela.setVisible(true);    
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um tutor na lista primeiro!");
+        }
+    }//GEN-LAST:event_btnAvançarActionPerformed
 
     private void btnVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar2ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnVoltar2ActionPerformed
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        this.dispose();
+        GerenciarTutores tela = new GerenciarTutores();
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnAtualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnVoltar1;
+    private javax.swing.JButton btnAtualizar;
+    private javax.swing.JButton btnAvançar;
     private javax.swing.JButton btnVoltar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
