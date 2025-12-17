@@ -49,7 +49,7 @@ public class CadastrarTutor extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastrar Dados do Tutor");
+        jLabel1.setText("Cadastrar Tutor");
 
         jLabel2.setText("Nome:");
 
