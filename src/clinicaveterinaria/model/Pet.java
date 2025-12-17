@@ -11,24 +11,28 @@ public class Pet {
     protected int idade;
     protected Sexo sexo;
     protected boolean isCastrado;
+    protected boolean isVacinado;
     protected double peso;
     protected String temperamento;
     protected String raca;
+    protected String alergias;
     protected Tutor tutor;
     protected ArrayList<Consulta> consultasAgendadas;
     protected ArrayList<Consulta> consultasHistorico;
 
 
-    public Pet(String nome, LocalDate dataNascimento, Sexo sexo, boolean isCastrado, double peso, String temperamento, String raca, Tutor tutor) {
+    public Pet(String nome, LocalDate dataNascimento, Sexo sexo, boolean isCastrado,  boolean isVacinado, double peso, String temperamento, String raca, String alergias, Tutor tutor) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         LocalDate hoje = LocalDate.now();
         this.idade = Period.between(this.dataNascimento, hoje).getYears();
         this.sexo = sexo;
         this.isCastrado = isCastrado;
+        this.isVacinado = isVacinado;
         this.peso = peso;
         this.temperamento = temperamento;
         this.raca = raca;
+        this.alergias = alergias;
         this.tutor = tutor;
         this.consultasAgendadas = new ArrayList<>();
         this.consultasHistorico = new ArrayList<>();

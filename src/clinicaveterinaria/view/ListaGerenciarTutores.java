@@ -12,14 +12,14 @@ import clinicaveterinaria.model.Tutor;
  *
  * @author Artur
  */
-public class GerenciarTutores extends javax.swing.JFrame {
+public class ListaGerenciarTutores extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GerenciarTutores.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListaGerenciarTutores.class.getName());
 
     /**
      * Creates new form GerenciarTutores
      */
-    public GerenciarTutores() {
+    public ListaGerenciarTutores() {
         initComponents();
         carregarLista();
     }
@@ -128,7 +128,7 @@ public class GerenciarTutores extends javax.swing.JFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         this.dispose();
-        GerenciarTutores tela = new GerenciarTutores();
+        ListaGerenciarTutores tela = new ListaGerenciarTutores();
         tela.setVisible(true);
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
