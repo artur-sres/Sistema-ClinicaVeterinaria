@@ -26,7 +26,6 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
 
     private void carregarTabela() {
         DefaultTableModel modelo = (DefaultTableModel) tabelaTutores.getModel();
-        System.out.println("Total de tutores na lista: " + TutorController.listaTutores.size());
 
         modelo.setNumRows(0);
 
