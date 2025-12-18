@@ -4,6 +4,11 @@
  */
 package clinicaveterinaria.view;
 
+import clinicaveterinaria.controller.VeterinarioController;
+import clinicaveterinaria.model.MedVet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Artur
@@ -17,6 +22,20 @@ public class ListaGerenciarVeterinarios extends javax.swing.JFrame {
      */
     public ListaGerenciarVeterinarios() {
         initComponents();
+        carregarTabela();
+    }
+    
+    private void carregarTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) tabelaTutores.getModel();
+        System.out.println("Total de tutores na lista: " + VeterinarioController.listaVeterinarios.size());
+
+        modelo.setNumRows(0);
+
+        for (MedVet t : VeterinarioController.listaVeterinarios) {
+            modelo.addRow(new Object[]{
+                t.getNome()
+            });
+        }
     }
 
     /**
@@ -28,21 +47,114 @@ public class ListaGerenciarVeterinarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaTutores = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        btnVoltar2 = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
+        btnAvançar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tabelaTutores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "NOME DO VETERINÁRIO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabelaTutores);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Selecione um Veterinário:");
+
+        btnVoltar2.setText("Cancelar");
+        btnVoltar2.addActionListener(this::btnVoltar2ActionPerformed);
+
+        btnAtualizar.setText("Atualizar Página");
+        btnAtualizar.addActionListener(this::btnAtualizarActionPerformed);
+
+        btnAvançar.setText("Avançar");
+        btnAvançar.addActionListener(this::btnAvançarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAtualizar)
+                                .addGap(201, 201, 201)
+                                .addComponent(btnVoltar2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAvançar))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAvançar)
+                    .addComponent(btnVoltar2)
+                    .addComponent(btnAtualizar))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVoltar2ActionPerformed
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        this.dispose();
+        ListaGerenciarTutores tela = new ListaGerenciarTutores();
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvançarActionPerformed
+        int linhaSelecionada = tabelaTutores.getSelectedRow();
+
+        if (linhaSelecionada != -1) {
+            MedVet veterinarioSelecionado = VeterinarioController.listaVeterinarios.get(linhaSelecionada);
+            VisualizarVeterinario tela = new VisualizarVeterinario(veterinarioSelecionado);
+            tela.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um tutor na lista primeiro!");
+        }
+    }//GEN-LAST:event_btnAvançarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +182,11 @@ public class ListaGerenciarVeterinarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtualizar;
+    private javax.swing.JButton btnAvançar;
+    private javax.swing.JButton btnVoltar2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tabelaTutores;
     // End of variables declaration//GEN-END:variables
 }

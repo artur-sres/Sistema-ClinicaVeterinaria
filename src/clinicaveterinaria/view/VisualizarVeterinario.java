@@ -10,15 +10,15 @@ import clinicaveterinaria.model.MedVet;
  *
  * @author Artur
  */
-public class VizualizarVeterinario extends javax.swing.JFrame {
+public class VisualizarVeterinario extends javax.swing.JFrame {
     private MedVet veterinario;
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VizualizarVeterinario.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VisualizarVeterinario.class.getName());
 
     /**
      * Creates new form VizualizarVeterinario
      */
-    public VizualizarVeterinario(MedVet veterinario) {
+    public VisualizarVeterinario(MedVet veterinario) {
         initComponents();
         this.veterinario = veterinario;
         
@@ -127,7 +127,7 @@ public class VizualizarVeterinario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
                     .addComponent(btnVisualizarPets)
@@ -141,7 +141,7 @@ public class VizualizarVeterinario extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         try {
-            EditarTutor tela = new EditarTutor(this.tutor);
+            EditarVeterinario tela = new EditarVeterinario(this.veterinario);
             tela.setVisible(true);
             this.dispose();
         } catch (Exception e) {

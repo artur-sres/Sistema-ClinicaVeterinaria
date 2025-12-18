@@ -21,6 +21,9 @@ public class Main {
             "Morada Nova - CE", 
             "089.570.333-51"
         ));
+        
+        Teste.testeTutores();
+        Teste.testeVeterinarios();
       
         Menu menu = new Menu();
         menu.setVisible(true);

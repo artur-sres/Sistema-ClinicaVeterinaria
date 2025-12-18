@@ -25,17 +25,17 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
     }
 
     private void carregarTabela() {
-    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-    System.out.println("Total de tutores na lista: " + TutorController.listaTutores.size());
-   
-    modelo.setNumRows(0);
+        DefaultTableModel modelo = (DefaultTableModel) tabelaTutores.getModel();
+        System.out.println("Total de tutores na lista: " + TutorController.listaTutores.size());
 
-    for (Tutor t : TutorController.listaTutores) {
-        modelo.addRow(new Object[]{
-            t.getNome()
-        });
+        modelo.setNumRows(0);
+
+        for (Tutor t : TutorController.listaTutores) {
+            modelo.addRow(new Object[]{
+                t.getNome()
+            });
+        }
     }
-}
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,7 +53,7 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
         btnVoltar2 = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabelaTutores = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,7 +96,7 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
         btnAtualizar.setText("Atualizar Página");
         btnAtualizar.addActionListener(this::btnAtualizarActionPerformed);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaTutores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -110,7 +110,7 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
                 {null}
             },
             new String [] {
-                "Nome"
+                "NOME DO TUTOR:"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -121,7 +121,10 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(tabelaTutores);
+        if (tabelaTutores.getColumnModel().getColumnCount() > 0) {
+            tabelaTutores.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,7 +158,7 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
                     .addComponent(btnAvançar)
                     .addComponent(btnVoltar2)
                     .addComponent(btnAtualizar))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,7 +166,7 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvançarActionPerformed
-        int linhaSelecionada = jTable1.getSelectedRow();
+        int linhaSelecionada = tabelaTutores.getSelectedRow();
         
         if (linhaSelecionada != -1) {
             Tutor tutorSelecionado = TutorController.listaTutores.get(linhaSelecionada);
@@ -193,6 +196,6 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tabelaTutores;
     // End of variables declaration//GEN-END:variables
 }

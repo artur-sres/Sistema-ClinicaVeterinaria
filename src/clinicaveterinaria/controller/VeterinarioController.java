@@ -20,4 +20,12 @@ public class VeterinarioController {
         MedVet novoVeterinario = new MedVet(nome, email, telefone);
         listaVeterinarios.add(novoVeterinario);
     }
+    
+    public static void editarVeterinario(MedVet veterinario, String nome, String email, String telefone)throws Exception{
+        validarDados(nome, email, telefone);
+        veterinario.setNome(nome);
+        veterinario.setEmail(email);
+        veterinario.setTelefone(telefone);
+        
+    }
 }

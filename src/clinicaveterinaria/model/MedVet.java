@@ -10,5 +10,4 @@ public class MedVet extends Pessoa {
         super(nome, email, telefone);
     }
     
-    
 }

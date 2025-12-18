@@ -95,9 +95,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.setText("Cadastros");
 
         jMenuItem7.setText("Cadastrar Novo Veterinário");
+        jMenuItem7.addActionListener(this::jMenuItem7ActionPerformed);
         jMenu1.add(jMenuItem7);
 
         jMenuItem8.setText("Gerenciar Veterinários");
+        jMenuItem8.addActionListener(this::jMenuItem8ActionPerformed);
         jMenu1.add(jMenuItem8);
         jMenu1.add(jSeparator1);
 
@@ -224,6 +226,16 @@ public class Menu extends javax.swing.JFrame {
         CadastrarPet tela = new CadastrarPet();
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        ListaGerenciarVeterinarios tela = new ListaGerenciarVeterinarios();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        CadastrarVeterinario tela = new CadastrarVeterinario();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
