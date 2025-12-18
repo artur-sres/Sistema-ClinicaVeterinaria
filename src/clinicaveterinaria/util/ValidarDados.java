@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package clinicaveterinaria.util;
 
 import br.com.caelum.stella.validation.CPFValidator;
@@ -10,6 +6,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 public class ValidarDados {
         
+    //Valida os dados para cadastrar veterinarios
     public static void validarDados(String nome, String email, String telefone) throws Exception{
         if (nome.isEmpty() || email.isEmpty() || telefone.isEmpty()) {
             throw new Exception("Preencha todos os campos obrigatórios!");
@@ -19,6 +16,7 @@ public class ValidarDados {
         ValidarDados.validarTelefone(telefone);
     }
     
+    //Valida os dados para cadastrar tutores
     public static void validarDados(String nome, String email, String telefone, String endereco, String cpf) throws Exception {
         if (nome.isEmpty() || email.isEmpty() || telefone.isEmpty() || endereco.isEmpty() || cpf.isEmpty()) {
             throw new Exception("Preencha todos os campos obrigatórios!");
@@ -36,6 +34,25 @@ public class ValidarDados {
         }
     }
     
+    //Valida os dados para cadastrar pets
+    public static void validarDados(String nome, String raca, String alergia, String temperamento) throws Exception{
+        if(nome.isEmpty() || temperamento.isEmpty()){
+            throw new Exception("Preencha todos os campos obrigatórios!");
+        }
+        validarNome(nome);
+        
+        //Validação das Strings
+        if (!raca.matches("[A-Za-zÀ-ü\\s]+")) {
+            throw new Exception("A raca digitado é inválido!");
+        }
+        if (!alergia.matches("[A-Za-zÀ-ü\\s]+")) {
+            throw new Exception("As alergias digitadas são inválidas!");
+        }
+        if (!temperamento.matches("[A-Za-zÀ-ü\\s]+")) {
+            throw new Exception("O temperamento digitado é inválido!");
+        } 
+   }
+   
     private static void validarNome(String nome) throws Exception{
         if (!nome.matches("[A-Za-zÀ-ü\\s]+")) {
             throw new Exception("O nome digitado é inválido!");

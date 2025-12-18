@@ -14,6 +14,10 @@ public class Tutor extends Pessoa{
         this.pets = new ArrayList<>();
     }
 
+    public void adicionarPet(Pet novoPet){
+        pets.add(novoPet);
+    }
+    
     //Getters
     public String getEndereco() {
         return endereco;
