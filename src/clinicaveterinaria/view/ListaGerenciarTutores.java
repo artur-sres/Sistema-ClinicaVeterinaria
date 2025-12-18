@@ -4,10 +4,10 @@
  */
 package clinicaveterinaria.view;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import clinicaveterinaria.controller.TutorController;
 import clinicaveterinaria.model.Tutor;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Artur
@@ -21,19 +21,21 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
      */
     public ListaGerenciarTutores() {
         initComponents();
-        carregarLista();
+        carregarTabela();
     }
 
-    private void carregarLista() {
-        DefaultListModel<String> modelo = new DefaultListModel<>();
-        
-        // Percorre a lista do Controller e adiciona os nomes na tela
-        for (Tutor t : TutorController.listaTutores) {
-            modelo.addElement(t.toString());
-        }
-        
-        jList1.setModel(modelo); // jList1 é o nome da sua lista no código
+    private void carregarTabela() {
+    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+    System.out.println("Total de tutores na lista: " + TutorController.listaTutores.size());
+   
+    modelo.setNumRows(0);
+
+    for (Tutor t : TutorController.listaTutores) {
+        modelo.addRow(new Object[]{
+            t.getNome()
+        });
     }
+}
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,25 +46,46 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         btnAvançar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         btnVoltar2 = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Espécie", "Nome", "Atendimento", "Horário"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAvançar.setText("Avançar");
         btnAvançar.addActionListener(this::btnAvançarActionPerformed);
-
-        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Selecione um Tutor:");
@@ -70,40 +93,69 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
         btnVoltar2.setText("Cancelar");
         btnVoltar2.addActionListener(this::btnVoltar2ActionPerformed);
 
-        btnAtualizar.setText("Atualizar");
+        btnAtualizar.setText("Atualizar Página");
         btnAtualizar.addActionListener(this::btnAtualizarActionPerformed);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Nome"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(btnAtualizar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnVoltar2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnAvançar))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(155, 155, 155))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAtualizar)
+                        .addGap(201, 201, 201)
+                        .addComponent(btnVoltar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAvançar))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAvançar)
                     .addComponent(btnVoltar2)
                     .addComponent(btnAtualizar))
-                .addGap(15, 15, 15))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,10 +163,10 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvançarActionPerformed
-        int indiceSelecionado = jList1.getSelectedIndex();
+        int linhaSelecionada = jTable1.getSelectedRow();
         
-        if (indiceSelecionado != -1) {
-            Tutor tutorSelecionado = TutorController.listaTutores.get(indiceSelecionado);
+        if (linhaSelecionada != -1) {
+            Tutor tutorSelecionado = TutorController.listaTutores.get(linhaSelecionada);
             VisualizarTutor tela = new VisualizarTutor(tutorSelecionado);
             tela.setVisible(true);    
         } else {
@@ -138,7 +190,9 @@ public class ListaGerenciarTutores extends javax.swing.JFrame {
     private javax.swing.JButton btnAvançar;
     private javax.swing.JButton btnVoltar2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
